@@ -1,7 +1,7 @@
 <template>
   <v-app>
-
-    <v-main>
+    <Nav />
+    <v-main class="dark">
       <router-view>
       </router-view>
     </v-main>
@@ -10,12 +10,13 @@
 </template>
 
 <script>
+import Nav from '@/components/Nav'
 
 export default {
   name: 'App',
 
   components: {
-    
+    Nav
   },
 
   data: () => ({
@@ -23,3 +24,9 @@ export default {
   }),
 };
 </script>
+
+<style scoped>
+.dark {
+  background-color: black;
+}
+</style>
