@@ -1,6 +1,9 @@
 <template>
-    <div class="projects white--text">
-        <h2>Projects</h2>
+    <div class="projects">
+        <h2 class="display-1 text-center ma-4">Projects</h2>
+        <v-container class="my-5">
+      
+        </v-container>
     </div>
 </template>
 

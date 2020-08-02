@@ -1,6 +1,9 @@
 <template>
-  <div class="dashboard white--text">
-    <h2>Dashboard</h2>
+  <div class="dashboard mb-4"> 
+    <h2 class="display-1 text-center ma-4">Dashboard</h2>
+    <v-container class="my-5">
+      
+    </v-container>
   </div>
 </template>
 

@@ -7,8 +7,8 @@
                 <span>Pro</span>
                 <i class="material-icons mx-1">library_add_check</i>
             </v-app-bar-title>
-            <span class="display-1">|</span>
-            <p class="caption">Manage your projects efficiently.</p>
+            <span class="display-1 hidden-sm-and-down">|</span>
+            <p class="caption hidden-sm-and-down">Manage your projects efficiently.</p>
             <v-spacer></v-spacer>
             <v-btn color="red darken-1">
                 <span>SIGN OUT</span>

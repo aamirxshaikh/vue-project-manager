@@ -1,6 +1,9 @@
 <template>
-    <div class="announcements white--text">
-        <h2>Announcements</h2>
+    <div class="announcements">
+        <h2 class="display-1 text-center ma-4">Announcements</h2>
+        <v-container class="my-5">
+      
+        </v-container>
     </div>
 </template>
 

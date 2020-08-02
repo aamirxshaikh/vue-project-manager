@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <Nav />
-    <v-main class="dark">
+    <v-main class="dark white--text">
       <router-view>
       </router-view>
     </v-main>
