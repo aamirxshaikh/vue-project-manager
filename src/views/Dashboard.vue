@@ -2,36 +2,30 @@
   <div class="dashboard mb-4"> 
     <h2 class="display-1 text-center ma-4">Dashboard</h2>
     <v-container class="my-5">
-      <v-layout row wrap :class="`mb-4 ${project.status} project`" v-for="(project, index) in projects" :key="index">
-        <v-flex xs12 md6 class="pa-1">
-          <v-card dark color="white" class="pa-4 black--text">
-            <div class="caption">Project Title</div>
-            <div>{{ project.title }}</div>
-          </v-card>
-        </v-flex>
+      <v-card :class="`mb-4 ${project.status} project pa-4 black--text text-center`" v-for="(project, index) in projects" :key="index">
+        <v-layout row wrap>
+          <v-flex xs12 md6 class="pa-1">
+              <div class="caption">Project Title</div>
+              <div>{{ project.title }}</div>
+               <v-divider></v-divider>
+          </v-flex>
+    
+          <v-flex xs6 md2 sm4 class="pa-1">
+              <div class="caption">Author</div>
+              <div>{{ project.author }}</div>
+          </v-flex>
 
-        <v-flex xs6 md2 sm4 class="pa-1">
-          <v-card dark color="primary" class="pa-4 black--text">
-            <div class="caption">Author</div>
-            <div>{{ project.author }}</div>
-          </v-card>
-        </v-flex>
+          <v-flex xs6 md2 sm4 class="pa-1">
+              <div class="caption">Due date</div>
+              <div>{{ project.due }}</div>
+          </v-flex>
 
-        <v-flex xs6 md2 sm4 class="pa-1">
-          <v-card dark color="red" class="pa-4 black--text">
-            <div class="caption">Due date</div>
-            <div>{{ project.due }}</div>
-          </v-card>
-        </v-flex>
-
-        <v-flex xs12 md2 sm4 class="pa-1">
-          <v-card dark color="green" class="pa-4 black--text">
-            <div class="caption">Status</div>
-            <div>{{ project.status }}</div>
-          </v-card>
-        </v-flex>
-        <v-divider></v-divider>
-      </v-layout>
+          <v-flex xs12 md2 sm4 class="pa-1">
+              <div class="caption">Status</div>
+              <div>{{ project.status }}</div>
+          </v-flex>
+        </v-layout>
+      </v-card>
     </v-container>
   </div>
 </template>
@@ -56,14 +50,14 @@ export default {
 
 <style scoped>
 .project.done {
-  border-left: 2px solid #3CD1C2;
+  background-color: #3CD1C2;
 }
 
 .project.ongoing {
-  border-left: 2px solid orange;
+  background-color:orange;
 }
 
 .project.overdue {
-  border-left: 2px solid tomato;
+  background-color:red;
 }
 </style>
