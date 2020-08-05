@@ -22,7 +22,9 @@
 
           <v-flex xs12 md2 sm4 class="pa-1">
               <div class="caption">Status</div>
-              <div>{{ project.status }}</div>
+                <v-chip color="indigo" text-color="white">
+                  {{ project.status }}
+                </v-chip>
           </v-flex>
         </v-layout>
       </v-card>
