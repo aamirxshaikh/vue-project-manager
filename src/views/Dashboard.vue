@@ -1,8 +1,8 @@
 <template>
   <div class="dashboard mb-4"> 
-    <h2 class="display-1 text-center ma-4">Dashboard</h2>
+    <h2 class="display-1 ma-4">Dashboard</h2>
     <v-container class="my-5">
-      <v-card :class="`mb-4 ${project.status} project pa-4 black--text text-center`" v-for="(project, index) in projects" :key="index">
+      <v-card :class="`mb-4 ${project.status} project pa-4 black--text text-center`" v-for="project in projects" :key="project.id">
         <v-layout row wrap>
           <v-flex xs12 md6 class="pa-1">
               <div class="caption">Project Title</div>
@@ -22,7 +22,7 @@
 
           <v-flex xs12 md2 sm4 class="pa-1">
               <div class="caption">Status</div>
-                <v-chip color="indigo" text-color="white">
+                <v-chip color="black" text-color="white">
                   {{ project.status }}
                 </v-chip>
           </v-flex>
@@ -33,33 +33,43 @@
 </template>
 
 <script>
+import database from '@/firebase/init'
 
 export default {
   name: 'Dashboard',
   
   data() {
     return {
-      projects: [
-        { title: 'Create a database', body: 'Lorem, ipsum dolor.', author: 'John doe', due: '2nd Aug', status: 'done' },
-        { title: 'Create a website', body: 'Lorem, ipsum dolor.', author: 'Jane doe', due: '10th Aug', status: 'ongoing' },
-        { title: 'Create a layout', body: 'Lorem, ipsum dolor.',author: 'Jack doe', due: '12th Aug', status: 'done' },
-        { title: 'Create a server', body: 'Lorem, ipsum dolor.',author: 'Jason doe', due: '22nd Aug', status: 'overdue' }
-      ]
+      projects: []
     }
+  },
+
+  created() {
+    database.collection('projects').get()
+      .then(items => {
+        items.forEach(item => {
+          let project = item.data();
+
+          project.id = item.id;
+
+          this.projects.push(project);
+        })
+      })
+      .catch(err => console.log(err));
   }
 }
 </script>
 
 <style scoped>
 .project.done {
-  background-color: #3CD1C2;
+  background-color: rgba(0, 255, 0, .9);
 }
 
 .project.ongoing {
-  background-color:orange;
+  background-color:rgb(236, 222, 22);
 }
 
 .project.overdue {
-  background-color:red;
+  background-color:rgb(255, 42, 42);
 }
 </style>
