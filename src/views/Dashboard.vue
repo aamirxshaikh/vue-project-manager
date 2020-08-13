@@ -4,27 +4,40 @@
     <v-container class="my-5">
       <v-card :class="`mb-4 ${project.status} project pa-4 black--text text-center`" v-for="project in projects" :key="project.id">
         <v-layout row wrap>
-          <v-flex xs12 md6 class="pa-1">
+          <v-flex xs12 md4 class="pa-1">
               <div class="caption">Project Title</div>
               <div>{{ project.title }}</div>
-               <v-divider></v-divider>
           </v-flex>
     
-          <v-flex xs6 md2 sm4 class="pa-1">
+          <v-flex xs6 md2 sm4 xs3 class="pa-1">
               <div class="caption">Author</div>
               <div>{{ project.author }}</div>
           </v-flex>
 
-          <v-flex xs6 md2 sm4 class="pa-1">
+          <v-flex xs6 md2 sm4 xs3 class="pa-1">
               <div class="caption">Due date</div>
               <div>{{ project.due }}</div>
           </v-flex>
 
-          <v-flex xs12 md2 sm4 class="pa-1">
+          <v-flex xs12 md2 sm2 xs3 class="pa-1">
               <div class="caption">Status</div>
                 <v-chip color="black" text-color="white">
                   {{ project.status }}
                 </v-chip>
+          </v-flex>
+            
+          <v-flex md2 sm2  class="pa-1">
+            <v-list-item-icon>
+              <i class="material-icons clear" @click="deleteProject(project.id)">clear</i>
+            </v-list-item-icon>
+          </v-flex>
+        </v-layout>
+
+        <v-layout row wrap>
+          <v-flex class="pa-1">
+            <div class="caption mx-4">
+              {{ project.body }}
+            </div>
           </v-flex>
         </v-layout>
       </v-card>
@@ -41,6 +54,18 @@ export default {
   data() {
     return {
       projects: []
+    }
+  },
+
+  methods: {
+    deleteProject(id) {
+      database.collection('projects').doc(id).delete()
+        .then(() => {
+          this.projects = this.projects.filter(project => {
+            return project.id !== id;
+          });
+        })
+        .catch(err => console.log(err));
     }
   },
 
@@ -71,5 +96,9 @@ export default {
 
 .project.overdue {
   background-color:rgb(255, 42, 42);
+}
+
+.clear {
+  cursor: pointer;
 }
 </style>
