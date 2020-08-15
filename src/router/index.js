@@ -8,6 +8,8 @@ import Announcements from '../views/Announcements.vue'
 import About from '../views/About.vue'
 import Terms from '../views/Terms.vue'
 
+import AddProject from '@/components/AddProject.vue'
+
 Vue.use(VueRouter)
 
   const routes = [
@@ -15,6 +17,12 @@ Vue.use(VueRouter)
     path: '/',
     name: 'Dashboard',
     component: Dashboard
+  },
+
+  {
+    path: '/add-project',
+    name: 'AddProject',
+    component: AddProject
   },
 
   {

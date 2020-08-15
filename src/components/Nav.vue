@@ -10,6 +10,11 @@
             <span class="display-1 hidden-sm-and-down">|</span>
             <p class="caption hidden-sm-and-down">Manage your projects efficiently.</p>
             <v-spacer></v-spacer>
+            <v-btn color="blue mx-4" class="add-project">
+                <router-link :to="{ name: 'AddProject' }">
+                    <i class="material-icons mx-1">add</i>
+                </router-link>
+            </v-btn>
             <v-btn color="red darken-1">
                 <span>SIGN OUT</span>
                 <i class="material-icons mx-1">undo</i>
@@ -56,5 +61,9 @@ export default {
 <style scoped>
 .caption {
     margin: 7px;
+}
+
+.add-project i {
+    color: black;
 }
 </style>
