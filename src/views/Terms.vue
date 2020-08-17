@@ -4,7 +4,7 @@
         <v-container class="my-5">
       
         </v-container>
-        <p class="text-center white black--text pa-5">Project Manager<strong>Pro</strong>&copy;</p>
+        <p class="text-center white black--text pa-5"><strong>Nitro </strong>Project Manager&copy;</p>
     </div>
 </template>
 

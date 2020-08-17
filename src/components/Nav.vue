@@ -1,10 +1,10 @@
 <template>
     <nav>
-        <v-app-bar flat app>
+        <v-app-bar flat app dark>
             <v-app-bar-nav-icon @click="show = !show"></v-app-bar-nav-icon>
             <v-app-bar-title>
+                <span>Nitro</span>
                 <span class="font-weight-light">Project Manager</span>
-                <span>Pro</span>
                 <i class="material-icons mx-1">library_add_check</i>
             </v-app-bar-title>
             <span class="display-1 hidden-sm-and-down">|</span>
@@ -20,7 +20,7 @@
                 <i class="material-icons mx-1">undo</i>
             </v-btn>
         </v-app-bar>
-        <v-navigation-drawer absolute v-model="show" class="deep-grey accent-4">
+        <v-navigation-drawer dark absolute v-model="show" class="deep-grey accent-4">
             <v-list rounded>
                 <v-subheader>REPORTS</v-subheader><br>
                 <v-list-title-title>MENU</v-list-title-title>
