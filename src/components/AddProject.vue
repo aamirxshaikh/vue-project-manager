@@ -16,12 +16,14 @@
                         </v-flex>
                     </v-layout>
 
-                    <v-layout>
+                    <v-layout class="mb-4">
                         <v-flex>
-                            <label for="due">Due date</label>
+                            <label for="due">Due</label>
                         </v-flex>
+                    </v-layout>
 
-                        <v-flex>
+                    <v-layout>
+                        <v-flex class="custom-date-picker">
                             <v-date-picker v-model="due"></v-date-picker>
                         </v-flex>
                     </v-layout>
@@ -34,7 +36,8 @@
 
                     <v-layout>
                         <v-flex>
-                            <v-btn class="mr-4" @click="addProject">submit</v-btn>
+                            <p class="red--text alert" v-if="alert !== ''"><strong>{{ alert }} !</strong></p>
+                            <v-btn color="blue" class="mr-4" @click="addProject">submit</v-btn>
                         </v-flex>
                     </v-layout>
                 </v-form>
@@ -50,10 +53,12 @@ export default {
     data() {
         return {
             title: '',
+            slug: '',
             author: '',
             due: new Date().toISOString().substr(0, 10),
             body: '',
-            status: 'ongoing'
+            status: 'ongoing',
+            alert: ''
         }
     },
 
@@ -67,12 +72,23 @@ export default {
 
     methods: {
         addProject() {
-            
+            if(this.title !== '' && this.author !== '' && this.validDate !== '' && this.body !== '') {
+                this.alert = '';
+            } else {
+                this.alert = 'You must fill-in all the required fields';
+            }
         }
     }
 }
 </script>
 
 <style scoped>
-
+.custom-date-picker {
+    text-align: center;
+    display: block
+}
+.alert {
+    text-align: center;
+    display: block;
+}
 </style>
