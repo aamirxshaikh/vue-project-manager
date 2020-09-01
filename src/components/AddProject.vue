@@ -4,12 +4,33 @@
         <v-container class="container my-4">
             <v-card class="pa-4">
                 <v-form ref="form">
-                    <v-text-field v-model="title" label="Title"></v-text-field>
-                    <v-text-field v-model="author" label="Author"></v-text-field>
+                    <v-layout>
+                        <v-flex>
+                            <v-text-field v-model="title" label="Title"></v-text-field>
+                        </v-flex>
+                    </v-layout>
 
-                    <v-textarea v-model="body" label="Body"></v-textarea>
+                    <v-layout>
+                        <v-flex>
+                            <v-text-field v-model="author" label="Author"></v-text-field>
+                        </v-flex>
+                    </v-layout>
 
-                    <v-btn class="mr-4">submit</v-btn>
+                    <v-layout>
+                        <v-flex>
+                            <label for="due">Due date</label>
+                        </v-flex>
+
+                        <v-flex>
+                            <v-date-picker v-model="due"></v-date-picker>
+                        </v-flex>
+                    </v-layout>
+
+                    <v-layout>
+                        <v-flex>
+                            <v-textarea v-model="body" label="Body"></v-textarea>
+                        </v-flex>
+                    </v-layout>
                 </v-form>
             </v-card>
         </v-container>
@@ -18,7 +39,25 @@
 
 <script>
 export default {
-    name: 'AddProject'
+    name: 'AddProject',
+
+    data() {
+        return {
+            title: '',
+            author: '',
+            due: new Date().toISOString().substr(0, 10),
+            body: '',
+            status: 'ongoing'
+        }
+    },
+
+    computed: {
+        validDate() {
+            const due = new Date(this.due);
+
+            return due;
+        }
+    }
 }
 </script>
 
