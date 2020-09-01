@@ -31,6 +31,12 @@
                             <v-textarea v-model="body" label="Body"></v-textarea>
                         </v-flex>
                     </v-layout>
+
+                    <v-layout>
+                        <v-flex>
+                            <v-btn class="mr-4" @click="addProject">submit</v-btn>
+                        </v-flex>
+                    </v-layout>
                 </v-form>
             </v-card>
         </v-container>
@@ -56,6 +62,12 @@ export default {
             const due = new Date(this.due);
 
             return due;
+        }
+    },
+
+    methods: {
+        addProject() {
+            
         }
     }
 }
