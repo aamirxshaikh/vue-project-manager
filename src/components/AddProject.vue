@@ -47,6 +47,9 @@
 </template>
 
 <script>
+import database from '@/firebase/init'
+import slugify from 'slugify'
+
 export default {
     name: 'AddProject',
 
@@ -74,6 +77,23 @@ export default {
         addProject() {
             if(this.title !== '' && this.author !== '' && this.due !== '' && this.body !== '') {
                 this.alert = '';
+
+                this.slug = slugify(this.title, {
+                    lower: true,
+                    replacement: '-',
+                    remove: /[$*_~.+,()'"!\-:@]/g,
+                });
+                
+                database.collection('projects').add({
+                    title: this.title,
+                    slug: this.slug,
+                    author: this.author,
+                    due: this.validDate,
+                    body: this.body,
+                    status: this.status
+                })
+                    .then(() => this.$router.push({ name: 'Dashboard' }))
+                    .catch(err => console.log(err));
             } else {
                 this.alert = 'You must fill-in all the required fields';
             }
