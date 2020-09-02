@@ -88,7 +88,7 @@ export default {
                     title: this.title,
                     slug: this.slug,
                     author: this.author,
-                    due: this.validDate,
+                    due: this.validDate.toDateString(),
                     body: this.body,
                     status: this.status
                 })
