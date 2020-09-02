@@ -9,7 +9,7 @@
               <div>{{ project.title }}</div>
           </v-flex>
     
-          <v-flex xs6 md2 sm4 xs3 class="pa-1">
+          <v-flex xs6 md2 sm3 xs2 class="pa-1">
               <div class="caption">Author</div>
               <div>{{ project.author }}</div>
           </v-flex>
@@ -26,9 +26,11 @@
                 </v-chip>
           </v-flex>
             
-          <v-flex md2 sm2  class="pa-1">
+          <v-flex md2 sm3 xs4 class="pa-1">
             <v-list-item-icon>
-              <i class="material-icons clear" @click="deleteProject(project.id)">clear</i>
+              <i class="material-icons check green--text">check</i>
+              <i class="material-icons mx-4 edit">edit</i>
+              <i class="material-icons clear red--text" @click="deleteProject(project.id)">clear</i>
             </v-list-item-icon>
           </v-flex>
         </v-layout>
@@ -99,6 +101,14 @@ export default {
 }
 
 .clear {
+  cursor: pointer;
+}
+
+.check {
+  cursor: pointer;
+}
+
+.edit {
   cursor: pointer;
 }
 </style>
