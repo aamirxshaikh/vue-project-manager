@@ -55,7 +55,7 @@ export default {
             title: '',
             slug: '',
             author: '',
-            due: new Date().toISOString().substr(0, 10),
+            due: '',
             body: '',
             status: 'ongoing',
             alert: ''
@@ -72,7 +72,7 @@ export default {
 
     methods: {
         addProject() {
-            if(this.title !== '' && this.author !== '' && this.validDate !== '' && this.body !== '') {
+            if(this.title !== '' && this.author !== '' && this.due !== '' && this.body !== '') {
                 this.alert = '';
             } else {
                 this.alert = 'You must fill-in all the required fields';
