@@ -28,7 +28,7 @@
             
           <v-flex md2 sm3 xs4 class="pa-1">
             <v-list-item-icon>
-              <i class="material-icons check green--text">check</i>
+              <i class="material-icons check green--text" @click="checkProject(project.id)">check</i>
               <i class="material-icons mx-4 edit">edit</i>
               <i class="material-icons clear red--text" @click="deleteProject(project.id)">clear</i>
             </v-list-item-icon>
@@ -60,6 +60,20 @@ export default {
   },
 
   methods: {
+    checkProject(id) {
+      let done = 'done';
+      
+      database.collection('projects').doc(id).update({
+        status: done
+      })
+        .then(this.projects.forEach(project => {
+          if(project.id === id) {
+            project.status = done;
+          }
+        }))
+        .catch(err => console.log(err))
+    },
+
     deleteProject(id) {
       database.collection('projects').doc(id).delete()
         .then(() => {
@@ -89,7 +103,7 @@ export default {
 
 <style scoped>
 .project.done {
-  background-color: rgba(0, 255, 0, .9);
+  background-color: rgba(0, 255, 0, .7);
 }
 
 .project.ongoing {
@@ -97,7 +111,7 @@ export default {
 }
 
 .project.overdue {
-  background-color:rgb(255, 42, 42);
+  background-color:rgba(255, 42, 42, .6);
 }
 
 .clear {
