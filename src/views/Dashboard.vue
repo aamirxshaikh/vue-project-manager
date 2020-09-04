@@ -55,23 +55,28 @@ export default {
   
   data() {
     return {
-      projects: []
+      projects: [],
+      checked: false
     }
   },
 
   methods: {
     checkProject(id) {
-      let done = 'done';
+      this.checked = ! this.checked;
       
-      database.collection('projects').doc(id).update({
-        status: done
-      })
-        .then(this.projects.forEach(project => {
-          if(project.id === id) {
-            project.status = done;
-          }
-        }))
-        .catch(err => console.log(err))
+      let done = 'done';
+
+      // if(this.checked === true) {
+        database.collection('projects').doc(id).update({
+          status: done
+        })
+          .then(this.projects.forEach(project => {
+            if(project.id === id) {
+              project.status = done;
+            }
+          }))
+          .catch(err => console.log(err))
+      // }
     },
 
     deleteProject(id) {
