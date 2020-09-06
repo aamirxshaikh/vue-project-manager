@@ -30,8 +30,9 @@
             <v-list-item-icon>
               <i v-if="project.status === 'ongoing'" class="material-icons check green--text" @click="checkProject(project.id)">check</i>
               <i v-else class="material-icons uncheck purple--text" @click="uncheckProject(project.id)">undo</i>
+              
               <router-link :to="{ name: 'EditProject', params: { slug_param: project.slug } }">
-                <i class="material-icons mx-4 edit">edit</i>
+                <i class="material-icons mx-4 edit black--text">edit</i>
               </router-link>
               <i class="material-icons clear red--text" @click="deleteProject(project.id)">clear</i>
             </v-list-item-icon>
