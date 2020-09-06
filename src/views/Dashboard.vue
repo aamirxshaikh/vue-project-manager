@@ -28,7 +28,9 @@
             
           <v-flex md2 sm3 xs4 class="pa-1">
             <v-list-item-icon>
-              <i class="material-icons check green--text" @click="checkProject(project.id)">check</i>
+              <i v-if="project.status === 'ongoing'" class="material-icons check green--text" @click="checkProject(project.id)">check</i>
+              <i v-else class="material-icons uncheck" @click="uncheckProject(project.id)">undo</i>
+              
               <i class="material-icons mx-4 edit">edit</i>
               <i class="material-icons clear red--text" @click="deleteProject(project.id)">clear</i>
             </v-list-item-icon>
@@ -62,11 +64,11 @@ export default {
 
   methods: {
     checkProject(id) {
-      this.checked = ! this.checked;
+      this.checked = true;
       
       let done = 'done';
 
-      // if(this.checked === true) {
+      if(this.checked === true) {
         database.collection('projects').doc(id).update({
           status: done
         })
@@ -76,7 +78,25 @@ export default {
             }
           }))
           .catch(err => console.log(err))
-      // }
+      }
+    },
+
+    uncheckProject(id) {
+      this.checked = false;
+
+      let ongoing = 'ongoing';
+
+      if(this.checked === false) {
+        database.collection('projects').doc(id).update({
+          status: ongoing
+        })
+          .then(this.projects.forEach(project => {
+            if(project.id === id) {
+              project.status = ongoing;
+            }
+          }))
+          .catch(err => console.log(err))
+      }
     },
 
     deleteProject(id) {
@@ -128,6 +148,10 @@ export default {
 }
 
 .edit {
+  cursor: pointer;
+}
+
+.uncheck {
   cursor: pointer;
 }
 </style>
