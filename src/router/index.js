@@ -9,6 +9,7 @@ import About from '../views/About.vue'
 import Terms from '../views/Terms.vue'
 
 import AddProject from '@/components/AddProject.vue'
+import EditProject from '@/components/EditProject.vue'
 
 Vue.use(VueRouter)
 
@@ -23,6 +24,12 @@ Vue.use(VueRouter)
     path: '/add-project',
     name: 'AddProject',
     component: AddProject
+  },
+
+  {
+    path: '/edit-project/:slug_param',
+    name: 'EditProject',
+    component: EditProject
   },
 
   {
