@@ -50,6 +50,7 @@
 
 <script>
 import database from '@/firebase/init'
+import slugify from 'slugify'
 
 export default {
     name: 'EditProject',
@@ -57,7 +58,8 @@ export default {
     data() {
         return {
             project: '',
-            dueUpdate: ''
+            dueUpdate: '',
+            alert: ''
         }
     },
 
@@ -66,6 +68,34 @@ export default {
             const due = new Date(this.dueUpdate);
 
             return due;
+        }
+    },
+
+    methods: {
+        updateProject() {
+            if(this.project.title !== '' && this.project.author !== '' && this.project.dueUpdate !== '' && this.project.body !== '') {
+                this.alert = '';
+
+                this.project.slug = slugify(this.project.title, {
+                    lower: true,
+                    replacement: '-',
+                    remove: /[$*_~.+,()'"!\-:@]/g
+                });
+
+                database.collection('projects').doc(this.project.id).update({
+                    title: this.project.title,
+                    slug: this.project.slug,
+                    author: this.project.author,
+                    due: this.validDateUpdate.toDateString(),
+                    dueTimestampFormat: this.validDateUpdate,
+                    body: this.project.body,
+                    status: this.project.status
+                })
+                    .then(() => this.$router.push({ name: 'Dashboard' }))
+                    .catch(err => console.log(err))
+            } else {
+                this.alert = 'You must fill-in all the required fields';
+            }
         }
     },
 
@@ -91,5 +121,10 @@ export default {
 .custom-date-picker {
     text-align: center;
     display: block
+}
+
+.alert {
+    text-align: center;
+    display: block;
 }
 </style>
