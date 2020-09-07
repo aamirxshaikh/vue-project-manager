@@ -89,6 +89,7 @@ export default {
                     slug: this.slug,
                     author: this.author,
                     due: this.validDate.toDateString(),
+                    dueTimestampFormat: this.validDate,
                     body: this.body,
                     status: this.status
                 })
