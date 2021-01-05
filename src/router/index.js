@@ -2,11 +2,11 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 
 import Dashboard from '../views/Dashboard.vue'
-import Team from '../views/Team.vue'
-import Projects from '../views/Projects.vue'
-import Announcements from '../views/Announcements.vue'
-import About from '../views/About.vue'
-import Terms from '../views/Terms.vue'
+// import Team from '../views/Team.vue'
+// import Projects from '../views/Projects.vue'
+// import Announcements from '../views/Announcements.vue'
+// import About from '../views/About.vue'
+// import Terms from '../views/Terms.vue'
 
 import AddProject from '@/components/AddProject.vue'
 import EditProject from '@/components/EditProject.vue'
@@ -32,35 +32,35 @@ Vue.use(VueRouter)
     component: EditProject
   },
 
-  {
-    path: '/team',
-    name: 'Team',
-    component: Team
-  },
+  // {
+  //   path: '/team',
+  //   name: 'Team',
+  //   component: Team
+  // },
 
-  {
-    path: '/projects',
-    name: 'Projects',
-    component: Projects
-  },
+  // {
+  //   path: '/projects',
+  //   name: 'Projects',
+  //   component: Projects
+  // },
   
-  {
-    path: '/announcements',
-    name: 'Announcements',
-    component: Announcements
-  },
+  // {
+  //   path: '/announcements',
+  //   name: 'Announcements',
+  //   component: Announcements
+  // },
 
-  {
-    path: '/about-us',
-    name: 'About',
-    component: About
-  },
+  // {
+  //   path: '/about-us',
+  //   name: 'About',
+  //   component: About
+  // },
 
-  {
-    path: '/terms-and-conditions',
-    name: 'Terms',
-    component: Terms
-  }
+  // {
+  //   path: '/terms-and-conditions',
+  //   name: 'Terms',
+  //   component: Terms
+  // }
 ]
 
 const router = new VueRouter({

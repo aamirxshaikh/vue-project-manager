@@ -1,6 +1,6 @@
 <template>
   <div class="dashboard mb-4"> 
-    <h2 class="display-1 ma-4">Dashboard</h2>
+    <h2 class="display-1 ma-4">Tasks</h2>
     <v-container class="my-5">
       <v-card :class="`mb-4 ${project.status} project pa-4 black--text text-center`" v-for="project in projects" :key="project.id">
         <v-layout row wrap>
